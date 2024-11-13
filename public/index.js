@@ -4,10 +4,6 @@ const DELAY_SECONDS = 3 * 1000; // 3 seconds in milliseconds
 // Track clicked images
 const clickedImages = new Set();
 
-// Initialize Supabase client
-const SUPABASE_URL = 'https://hzbfklzbwjfkgyseokex.supabase.co';
-const SUPABASE_KEY = 'your_supabase_key';
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // Function to initialize the slider with specific images
 function initializeSlider(beforeImg, afterImg) {
@@ -20,6 +16,26 @@ function initializeSlider(beforeImg, afterImg) {
         afterImg: afterImg,
         height: "400px",
         lineColor: "rgba(0,0,0,0.5)"
+    });
+}
+
+function submitToGoogleForm(event) {
+    event.preventDefault();
+    const email = document.getElementById('emailInput').value;
+    
+    const formData = new FormData();
+    formData.append('entry.1919113729', email); // Replace 'YOUR_ENTRY_ID' with the actual entry ID from Google Form
+
+    fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLSdTwgT5t26I1LWU6VKRnJr4nJR6d8p0phHE6D2z0IHNkhQPMA/formResponse', { // Replace with your form's action URL
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+    })
+    .then(() => {
+        document.getElementById('messageContainer').innerHTML = '<div class="message success">Thank you for joining the waitlist!</div>';
+    })
+    .catch(() => {
+        document.getElementById('messageContainer').innerHTML = '<div class="message error">There was an error. Please try again.</div>';
     });
 }
 
@@ -63,24 +79,6 @@ document.querySelectorAll('.thumbnail').forEach((thumbnail) => {
         const index = parseInt(thumbnail.getAttribute('data-index'), 10);
         handleThumbnailClick(index);
     });
-});
-
-// Handle form submission
-document.getElementById('emailForm').addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const email = document.getElementById('emailInput').value;
-
-    const { data, error } = await supabase
-        .from('landing_email')
-        .insert([{ email }]);
-
-    if (error) {
-        console.error('Error inserting data:', error);
-        showMessage('There was an error. Please try again.', 'error');
-    } else {
-        showMessage('Thank you for joining the waitlist!', 'success');
-        document.getElementById('emailForm').reset();
-    }
 });
 
 function showMessage(text, type) {
