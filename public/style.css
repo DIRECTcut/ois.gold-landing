@@ -202,6 +202,11 @@ button:hover {
     margin-top: auto;
 }
 
+
+#mySlider {
+    z-index: 9999;
+}
+
 #mySlider img {
     /* max-width: 100%;
     max-height: 100%;
@@ -240,6 +245,15 @@ footer {
         top: auto;
         left: auto;
     }
+
+    .right-panel {
+        display: none;
+    }
+
+    .left-panel {
+        overflow: scroll;
+        width: 100%!important;
+    }
 }
 
 .message.error {
@@ -274,4 +288,53 @@ footer {
     border: 2px solid var(--secondary);
     display: block;
     background-color: white;
+}
+
+.left-panel {
+    position: relative;
+    width: 50%;
+    /* overflow: hidden; */
+}
+
+.review-carousel {
+    width: 100%;
+    margin: 0 auto 20px;
+    text-align: center;
+    position: relative;
+
+    span {
+        color: var(--text);
+    }
+}
+
+.swiper-slide {
+    font-style: italic;
+    color: #333;
+    padding: 20px;
+}
+
+/* .swiper-button-next,
+.swiper-button-prev {
+    color: #333;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 25px;
+    margin-top: -12.5px;
+} */
+
+.swiper-wrapper {
+    padding-bottom: 20px;
+}
+
+.swiper-button-next {
+    right: 10px;
+}
+
+.swiper-button-prev {
+    left: 10px;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #333;
 }

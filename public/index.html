@@ -6,6 +6,8 @@
     <title>OIS.Gold: Exquisite Jewelry Imaging</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
     <link preload rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/before-after-slider@1.0.0/dist/slider.bundle.js"></script>
     <script src="index.js" defer></script>
 </head>
@@ -42,6 +44,25 @@
                         <p>Scale your imaging process effortlessly</p>
                     </div>
                 </div>
+            </div>
+            <div class="review-carousel swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <p>"I was blown away by the results! The images look flawless, even starting from lower-quality originals."</p>
+                        <span>- Emma R.</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <p>"Incredible transformation! I can't imagine going back to manual retouching after this."</p>
+                        <span>- Liam K.</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <p>"Our workflow has become faster and more efficient with such high-quality results."</p>
+                        <span>- Olivia M.</span>
+                    </div>                    
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
             <div id="messageContainer">
                 <!-- <div class="message success">Thank you for joining the waitlist!</div>
@@ -92,8 +113,19 @@
     </div>
 
     <script>
-        
+        document.addEventListener('DOMContentLoaded', function () {
+            const swiper = new Swiper('.swiper-container', {
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        });
     </script>
 </body>
 </html>
-https://docs.google.com/forms/d/e/1FAIpQLSdTwgT5t26I1LWU6VKRnJr4nJR6d8p0phHE6D2z0IHNkhQPMA/viewform?embedded=true
