@@ -5,220 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OIS.Gold: Exquisite Jewelry Imaging</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #232329;
-            --secondary: #2d2d35;
-            --accent: #d4af37;
-            --text: #e0e0e0;
-            --light: #ffffff;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body, html {
-            font-family: 'Raleway', sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background-color: var(--primary);
-            height: 100%;
-            overflow: hidden;
-        }
-        .container {
-            display: flex;
-            height: 100%;
-        }
-        .left-panel, .right-panel {
-            flex: 1;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .left-panel {
-            background: var(--primary);
-        }
-        .right-panel {
-            background: var(--secondary);
-            position: relative;
-            overflow: hidden;
-        }
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8em;
-            font-weight: 700;
-            color: var(--light);
-            margin-bottom: 40px;
-        }
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: var(--light);
-        }
-        p {
-            font-size: 1em;
-            margin-bottom: 20px;
-            font-weight: 300;
-            color: var(--text);
-        }
-        .benefits {
-            margin-top: 30px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-        .benefit {
-            display: flex;
-            align-items: center;
-        }
-        .benefit-icon {
-            width: 30px;
-            height: 30px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            color: var(--primary);
-            font-weight: bold;
-        }
-        .benefit p {
-            margin-bottom: 0;
-            font-size: 0.9em;
-        }
-        .email-form {
-            margin-top: 40px;
-            position: relative;
-        }
-        .stardust-container {
-            position: absolute;
-            width: 150%;
-            height: 150%;
-            top: -25%;
-            left: -25%;
-            overflow: hidden;
-            pointer-events: none;
-        }
-        .stardust {
-            position: absolute;
-            background: var(--accent);
-            border-radius: 50%;
-            opacity: 0;
-            animation: twinkle 3s infinite ease-in-out;
-        }
-        @keyframes twinkle {
-            0%, 100% { opacity: 0; transform: scale(0.5); }
-            50% { opacity: 0.7; transform: scale(1); }
-        }
-        .input-group {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
-        }
-        input, button {
-            padding: 15px;
-            font-family: 'Raleway', sans-serif;
-            border: none;
-        }
-        input {
-            flex-grow: 1;
-            background: var(--secondary);
-            color: var(--light);
-        }
-        input::placeholder {
-            color: var(--text);
-        }
-        button {
-            background: var(--accent);
-            color: var(--primary);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding-left: 25px;
-            padding-right: 25px;
-        }
-        button:hover {
-            background: var(--light);
-            color: var(--primary);
-        }
-        .image-container {
-            margin-top: auto;
-            margin-bottom: auto;
-            /* this line */
-            position: relative;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            height: 80%;
-            /* background: url('/api/placeholder/800/600') no-repeat center center;
-            background-size: cover;
-            opacity: 0.7; */
-        }
-        #mySlider .slider-container {
-            z-index: 2;
-            border-radius: 5px;
-        }
-        footer {
-            text-align: center;
-            font-size: 0.8em;
-            color: var(--text);
-            margin-top: 20px;
-        }
-        @media (max-width: 1024px) {
-            .benefits {
-                grid-template-columns: 1fr;
-            }
-        }
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-            .left-panel, .right-panel {
-                padding: 20px;
-            }
-            .image-container {
-                position: relative;
-                width: 100%;
-                height: 200px;
-                transform: none;
-                top: auto;
-                left: auto;
-            }
-        }
-        .message.error {
-            background-color: rgba(255, 0, 0, 0.25);
-        }
-        .message.success {
-            background-color: rgba(0, 255, 0, 0.25);
-        }
-        .message {
-            margin-left: auto;
-            text-align: center;
-            padding: 5px 0px;
-            border-radius: 5px;
-        }
-        .options {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .thumbnails {
-            max-width: 100%;
-            width: 100px;
-            max-height: 100px;
-            object-fit: cover;
-        }
-    </style>
+    <link preload rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/before-after-slider@1.0.0/dist/slider.bundle.js"></script>
+    <script src="index.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -274,19 +64,22 @@
         <div class="right-panel">
             <div class="options">
                 <a href="#" class="thumbnail" data-index="0">
-                    <img class="thumbnails" src="1-before.png" alt="">
+                    <img class="thumbnails" src="images/before/1.jpg" alt="">
                 </a>
                 <a href="#" class="thumbnail" data-index="1">
-                    <img class="thumbnails" src="2-before.png" alt="">
+                    <img class="thumbnails" src="images/before/2.jpg" alt="">
                 </a>
                 <a href="#" class="thumbnail" data-index="2">
-                    <img class="thumbnails" src="3-before.png" alt="">
+                    <img class="thumbnails" src="images/before/3.jpg" alt="">
                 </a>
                 <a href="#" class="thumbnail" data-index="3">
-                    <img class="thumbnails" src="4-before.png" alt="">
+                    <img class="thumbnails" src="images/before/4.jpg" alt="">
                 </a>
                 <a href="#" class="thumbnail" data-index="4">
-                    <img class="thumbnails" src="5-before.png" alt="">
+                    <img class="thumbnails" src="images/before/5.jpg" alt="">
+                </a>
+                <a href="#" class="thumbnail" data-index="5">
+                    <img class="thumbnails" src="images/before/6.jpg" alt="">
                 </a>
             </div>
             <div class="image-container">
@@ -294,121 +87,5 @@
             </div>
         </div>
     </div>
-    <script>
-        // Initialize Supabase client
-        const SUPABASE_URL = 'https://hzbfklzbwjfkgyseokex.supabase.co';
-        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6YmZrbHpid2pma2d5c2Vva2V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjQyNzg1NzMsImV4cCI6MjAzOTg1NDU3M30.73XcTcWxryHoq7tZbPLijjwr4PqDnz2-t6sBZ_YCkbI';
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-        // Function to initialize the slider with specific images
-        function initializeSlider(beforeImg, afterImg) {
-            // Clear the current slider content
-            const sliderContainer = document.getElementById('mySlider');
-            sliderContainer.innerHTML = '';
-
-            // Initialize new slider
-            new SliderBar({
-                el: '#mySlider',
-                beforeImg: beforeImg,
-                afterImg: afterImg,
-                height: "400px",
-                lineColor: "rgba(0,0,0,0.5)"
-            });
-        }
-
-        // Function to handle the thumbnail click with a delay
-        function handleThumbnailClick(index) {
-            // Show a loading message or animation (optional)
-            const sliderContainer = document.getElementById('mySlider');
-            sliderContainer.innerHTML = '<div class="loading" style="display: flex; justify-content: center">Loading...</div>';
-
-            // Images for each thumbnail
-            const beforeImg = `${index + 1}-before.png`;
-            const afterImg = `${index + 1}-after.png`;
-
-            // Delay the slider initialization by 5 seconds
-            setTimeout(() => {
-                initializeSlider(beforeImg, afterImg);
-            }, 5000);
-        }
-
-        // Add click event listeners to thumbnails
-        document.querySelectorAll('.thumbnail').forEach((thumbnail) => {
-            thumbnail.addEventListener('click', (event) => {
-                event.preventDefault();
-                const index = parseInt(thumbnail.getAttribute('data-index'), 10);
-                handleThumbnailClick(index);
-            });
-        });
-
-        // Handle form submission
-        document.getElementById('emailForm').addEventListener('submit', async (event) => {
-            event.preventDefault();
-            const email = document.getElementById('emailInput').value;
-
-            const { data, error } = await supabase
-                .from('landing_email')
-                .insert([{ email }]);
-
-            if (error) {
-                console.error('Error inserting data:', error);
-                showMessage('There was an error. Please try again.', 'error');
-            } else {
-                showMessage('Thank you for joining the waitlist!', 'success');
-                document.getElementById('emailForm').reset();
-            }
-        });
-
-        function showMessage(text, type) {
-            const message = document.createElement('div');
-            message.classList.add('message', type);
-            message.textContent = text;
-            document.querySelector('#messageContainer').appendChild(message);
-
-            setTimeout(() => {
-                message.remove();
-            }, 3000);
-        }
-
-        // Stardust effect
-        function createStardust(selector) {
-            const container = document.querySelector(selector);
-            const containerRect = container.getBoundingClientRect();
-
-            function createStar() {
-                const star = document.createElement('div');
-                star.classList.add('stardust');
-
-                const size = Math.random() * 3 + 1;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-
-                const left = Math.random() * containerRect.width;
-                const top = Math.random() * containerRect.height;
-                star.style.left = `${left}px`;
-                star.style.top = `${top}px`;
-                // star.style.bottom = `${bottom}px`
-
-                star.style.animationDuration = `${Math.random() * 2 + 2}s`;
-                star.style.animationDelay = `${Math.random() * 2}s`;
-
-                container.appendChild(star);
-
-                setTimeout(() => {
-                    star.remove();
-                    createStar();
-                }, 5000);
-            }
-
-            for (let i = 0; i < 100; i++) {
-                setTimeout(createStar, Math.random() * 3000);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            createStardust('#stardustContainer');
-            createStardust('.image-container');
-        });
-
-    </script>
 </body>
 </html>

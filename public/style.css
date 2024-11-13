@@ -1,0 +1,261 @@
+:root {
+    --primary: #232329;
+    --secondary: #2d2d35;
+    --accent: #d4af37;
+    --text: #e0e0e0;
+    --light: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    font-family: 'Raleway', sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background-color: var(--primary);
+    height: 100%;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+}
+
+.left-panel,
+.right-panel {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.left-panel {
+}
+
+.right-panel {
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--light);
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: var(--light);
+}
+
+p {
+    font-size: 1em;
+    margin-bottom: 20px;
+    font-weight: 300;
+    color: var(--text);
+}
+
+.benefits {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.benefit {
+    display: flex;
+    align-items: center;
+}
+
+.benefit-icon {
+    width: 30px;
+    height: 30px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: var(--primary);
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.benefit p {
+    margin-bottom: 0;
+    font-size: 0.9em;
+}
+
+.email-form {
+    margin-top: 40px;
+    position: relative;
+}
+
+.stardust-container {
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    top: -25%;
+    left: -25%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.stardust {
+    position: absolute;
+    background: var(--accent);
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+}
+
+.input-group {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+}
+
+input,
+button {
+    padding: 15px;
+    font-family: 'Raleway', sans-serif;
+    border: none;
+}
+
+input {
+    flex-grow: 1;
+    background: var(--secondary);
+    color: var(--light);
+}
+
+input::placeholder {
+    color: var(--text);
+}
+
+button {
+    background: var(--accent);
+    color: var(--primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+button:hover {
+    background: var(--light);
+    color: var(--primary);
+}
+
+.image-container {
+    object-fit: contain;
+    height: auto;
+    max-height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+#mySlider img {
+    /* max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Maintain aspect ratio
+    background-color: white; Ensure the background is white */
+}
+
+footer {
+    text-align: center;
+    font-size: 0.8em;
+    color: var(--text);
+    margin-top: 20px;
+}
+
+@media (max-width: 1024px) {
+    .benefits {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .left-panel,
+    .right-panel {
+        padding: 20px;
+    }
+
+    .image-container {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        transform: none;
+        top: auto;
+        left: auto;
+    }
+}
+
+.message.error {
+    background-color: rgba(255, 0, 0, 0.25);
+}
+
+.message.success {
+    background-color: rgba(0, 255, 0, 0.25);
+}
+
+.message {
+    margin-left: auto;
+    text-align: center;
+    padding: 5px 0px;
+    border-radius: 5px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center; 
+}
+
+.thumbnails {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 2px solid var(--secondary);
+    display: block;
+    background-color: white;
+}
