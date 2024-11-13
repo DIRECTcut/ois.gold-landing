@@ -151,13 +151,14 @@
         .image-container {
             margin-top: auto;
             margin-bottom: auto;
-            /* position: absolute;
+            /* this line */
+            position: relative;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 80%;
             height: 80%;
-            background: url('/api/placeholder/800/600') no-repeat center center;
+            /* background: url('/api/placeholder/800/600') no-repeat center center;
             background-size: cover;
             opacity: 0.7; */
         }
@@ -203,6 +204,17 @@
             text-align: center;
             padding: 5px 0px;
             border-radius: 5px;
+        }
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .thumbnails {
+            max-width: 100%;
+            width: 100px;
+            max-height: 100px;
+            object-fit: cover;
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -260,6 +272,23 @@
             </div>
         </div>
         <div class="right-panel">
+            <div class="options">
+                <a href="#" class="thumbnail" data-index="0">
+                    <img class="thumbnails" src="1-before.png" alt="">
+                </a>
+                <a href="#" class="thumbnail" data-index="1">
+                    <img class="thumbnails" src="2-before.png" alt="">
+                </a>
+                <a href="#" class="thumbnail" data-index="2">
+                    <img class="thumbnails" src="3-before.png" alt="">
+                </a>
+                <a href="#" class="thumbnail" data-index="3">
+                    <img class="thumbnails" src="4-before.png" alt="">
+                </a>
+                <a href="#" class="thumbnail" data-index="4">
+                    <img class="thumbnails" src="5-before.png" alt="">
+                </a>
+            </div>
             <div class="image-container">
                 <div id="mySlider"></div>
             </div>
@@ -270,10 +299,49 @@
         const SUPABASE_URL = 'https://hzbfklzbwjfkgyseokex.supabase.co';
         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6YmZrbHpid2pma2d5c2Vva2V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjQyNzg1NzMsImV4cCI6MjAzOTg1NDU3M30.73XcTcWxryHoq7tZbPLijjwr4PqDnz2-t6sBZ_YCkbI';
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        // Function to initialize the slider with specific images
+        function initializeSlider(beforeImg, afterImg) {
+            // Clear the current slider content
+            const sliderContainer = document.getElementById('mySlider');
+            sliderContainer.innerHTML = '';
+
+            // Initialize new slider
+            new SliderBar({
+                el: '#mySlider',
+                beforeImg: beforeImg,
+                afterImg: afterImg,
+                height: "400px",
+                lineColor: "rgba(0,0,0,0.5)"
+            });
+        }
+
+        // Function to handle the thumbnail click with a delay
+        function handleThumbnailClick(index) {
+            // Show a loading message or animation (optional)
+            const sliderContainer = document.getElementById('mySlider');
+            sliderContainer.innerHTML = '<div class="loading" style="display: flex; justify-content: center">Loading...</div>';
+
+            // Images for each thumbnail
+            const beforeImg = `${index + 1}-before.png`;
+            const afterImg = `${index + 1}-after.png`;
+
+            // Delay the slider initialization by 5 seconds
+            setTimeout(() => {
+                initializeSlider(beforeImg, afterImg);
+            }, 5000);
+        }
+
+        // Add click event listeners to thumbnails
+        document.querySelectorAll('.thumbnail').forEach((thumbnail) => {
+            thumbnail.addEventListener('click', (event) => {
+                event.preventDefault();
+                const index = parseInt(thumbnail.getAttribute('data-index'), 10);
+                handleThumbnailClick(index);
+            });
+        });
 
         // Handle form submission
         document.getElementById('emailForm').addEventListener('submit', async (event) => {
-            debugger;
             event.preventDefault();
             const email = document.getElementById('emailInput').value;
 
@@ -301,28 +369,30 @@
             }, 3000);
         }
 
+        // Stardust effect
         function createStardust(selector) {
             const container = document.querySelector(selector);
             const containerRect = container.getBoundingClientRect();
-            
+
             function createStar() {
                 const star = document.createElement('div');
                 star.classList.add('stardust');
-                
+
                 const size = Math.random() * 3 + 1;
                 star.style.width = `${size}px`;
                 star.style.height = `${size}px`;
-                
+
                 const left = Math.random() * containerRect.width;
                 const top = Math.random() * containerRect.height;
                 star.style.left = `${left}px`;
                 star.style.top = `${top}px`;
-                
+                // star.style.bottom = `${bottom}px`
+
                 star.style.animationDuration = `${Math.random() * 2 + 2}s`;
                 star.style.animationDelay = `${Math.random() * 2}s`;
-                
+
                 container.appendChild(star);
-                
+
                 setTimeout(() => {
                     star.remove();
                     createStar();
@@ -334,17 +404,11 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', function () {createStardust('#stardustContainer')});
-        document.addEventListener('DOMContentLoaded', function () {createStardust('.image-container')});
-        new SliderBar({
-            el: '#mySlider',            // The container, required
-            beforeImg: './1-before.png',  // before image, required
-            afterImg: './1-after.png',    // after image, required
-            // width: "90%",               // slide-wrap width, default 100%
-            height: "400px",            // slide-wrap height, default image-height
-            // line: false,                 // Dividing line, default true
-            lineColor: "rgba(0,0,0,0.5)" // Dividing line color, default rgba(0,0,0,0.5)
+        document.addEventListener('DOMContentLoaded', function () {
+            createStardust('#stardustContainer');
+            createStardust('.image-container');
         });
+
     </script>
 </body>
 </html>
