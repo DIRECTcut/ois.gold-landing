@@ -25,6 +25,15 @@ html {
 .container {
     display: flex;
     height: 100%;
+    .label {
+        display: none
+    }
+    .label.after {
+        transform: translate(15px);
+    }
+    .label.before {
+        transform: translate(-15px);
+    }
 }
 
 .left-panel,
@@ -35,6 +44,13 @@ html {
     flex-direction: column;
     justify-content: space-between;
 }
+
+.right-panel h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 
 .left-panel {
 }
