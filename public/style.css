@@ -58,6 +58,8 @@ html {
 .right-panel {
     justify-content: space-between;
     overflow: hidden;
+    z-index: 3;
+    background-color: var(--primary);
 }
 
 .logo {
@@ -325,6 +327,7 @@ footer {
 
 .swiper-wrapper {
     padding-bottom: 20px;
+    z-index: 3;
 }
 
 .swiper-button-next {
