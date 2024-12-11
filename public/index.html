@@ -85,24 +85,68 @@
             <h2>Try It Yourself</h2>
             <div class="options">
                 <a href="#" class="thumbnail" data-index="0">
-                    <img class="thumbnails" src="images/before/1.jpg" alt="">
+                    <img class="thumbnails" src="images/before/1-before.jpg" alt="">
                 </a>
                 <a href="#" class="thumbnail" data-index="1">
-                    <img class="thumbnails" src="images/before/2.jpg" alt="">
+                    <img class="thumbnails" src="images/before/2-before.jpg" alt="">
                 </a>
                 <a href="#" class="thumbnail" data-index="2">
-                    <img class="thumbnails" src="images/before/3.jpg" alt="">
+                    <img class="thumbnails" src="images/before/3-before.jpg" alt="">
                 </a>
                 <a href="#" class="thumbnail" data-index="3">
-                    <img class="thumbnails" src="images/before/4.jpg" alt="">
+                    <img class="thumbnails" src="images/before/4-before.jpg" alt="">
                 </a>
                 <a href="#" class="thumbnail" data-index="4">
-                    <img class="thumbnails" src="images/before/5.jpg" alt="">
+                    <img class="thumbnails" src="images/before/5-before.jpg" alt="">
                 </a>
                 <a href="#" class="thumbnail" data-index="5">
-                    <img class="thumbnails" src="images/before/6.jpg" alt="">
+                    <img class="thumbnails" src="images/before/6-before.jpg" alt="">
+                </a>
+                <a href="#" class="thumbnail" data-index="6">
+                    <img class="thumbnails" src="images/before/7-before.jpg" alt="">
+                </a>
+                <a href="#" class="thumbnail" data-index="7">
+                    <img class="thumbnails" src="images/before/8-before.jpg" alt="">
+                </a>
+                <a href="#" class="thumbnail" data-index="8">
+                    <img class="thumbnails" src="images/before/9-before.jpg" alt="">
+                </a>
+                <a href="#" class="thumbnail" data-index="9">
+                    <img class="thumbnails" src="images/before/10-before.jpg" alt="">
+                </a>
+                <a href="#" class="thumbnail" data-index="10">
+                    <img class="thumbnails" src="images/before/11-before.jpg" alt="">
+                </a>
+                <a href="#" class="thumbnail" data-index="11">
+                    <img class="thumbnails" src="images/before/12-before.jpg" alt="">
+                </a>
+                <a href="#" class="thumbnail" data-index="12">
+                    <img class="thumbnails" src="images/before/13-before.jpg" alt="">
+                </a>
+                <a href="#" class="thumbnail" data-index="13">
+                    <img class="thumbnails" src="images/before/14-before.jpg" alt="">
+                </a>
+                <a href="#" class="thumbnail" data-index="14">
+                    <img class="thumbnails" src="images/before/15-before.jpg" alt="">
+                </a>
+                <a href="#" class="thumbnail" data-index="15">
+                    <img class="thumbnails" src="images/before/16-before.jpg" alt="">
+                </a>
+                <a href="#" class="thumbnail" data-index="16">
+                    <img class="thumbnails" src="images/before/17-before.jpg" alt="">
+                </a>
+                <a href="#" class="thumbnail" data-index="17">
+                    <img class="thumbnails" src="images/before/18-before.jpg" alt="">
+                </a>
+                <a href="#" class="thumbnail" data-index="18">
+                    <img class="thumbnails" src="images/before/19-before.jpg" alt="">
+                  </a>
+                <a href="#" class="thumbnail" data-index="19">
+                    <img class="thumbnails" src="images/before/20-before.jpg" alt="">
                 </a>
             </div>
+            <button class="thumbnail-btn prev"><</button>
+            <button class="thumbnail-btn next">></button>                                                                                      
             <div class="image-container">
                 <span class="label before">Before</span>
                 <div id="mySlider">
@@ -125,6 +169,50 @@
                     prevEl: '.swiper-button-prev',
                 },
             });
+            const options = document.querySelector('.options');
+  const thumbnails = document.querySelectorAll('.thumbnail');
+  const btnNext = document.querySelector('.thumbnail-btn.next');
+  const btnPrev = document.querySelector('.thumbnail-btn.prev');
+
+let currentIndex = 0;
+
+
+  // Обновить положение слайдов
+  function updateSlider() {
+    const offset = -currentIndex * 100;
+    options.style.transform = `translateX(${offset}%)`;
+  }
+
+  // Обработчик для кнопки "Вперед"
+  btnNext.addEventListener('click', () => {
+    if (currentIndex === 4) {
+        btnNext.classList.add('right-limiter')
+    } else if (currentIndex > 0) {
+        btnPrev.classList.remove('left-limiter');
+    }
+    if (currentIndex < thumbnails.length - 1) {
+      currentIndex++;
+      updateSlider();
+    }
+  });
+
+  // Обработчик для кнопки "Назад"
+
+  btnPrev.addEventListener('click', () => {
+    if (currentIndex !== 4) {
+        btnNext.classList.remove('right-limiter')
+    } else if (currentIndex = 2) {
+        btnPrev.classList.add('left-limiter');
+    }
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSlider();
+    }
+  });
+
+  // Установить начальную позицию
+  options.style.display = 'flex';
+  options.style.transition = 'transform 0.75s ease';
         });
     </script>
 </body>

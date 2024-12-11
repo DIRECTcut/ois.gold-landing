@@ -44,7 +44,7 @@ function handleThumbnailClick(index) {
     const sliderContainer = document.getElementById('mySlider');
 
     if (clickedImages.has(index)) {
-        initializeSlider(`images/before/${index + 1}.jpg`, `images/after/${index + 1}.jpg`);
+        initializeSlider(`images/before/${index + 1}-before.jpg`, `images/after/${index + 1}-after.jpg`);
         return;
     }
 
@@ -54,8 +54,8 @@ function handleThumbnailClick(index) {
                                         <div id="loadingPercentage">0%</div>
                                      </div>`;
 
-    const beforeImg = `images/before/${index + 1}.jpg`;
-    const afterImg = `images/after/${index + 1}.jpg`;
+    const beforeImg = `images/before/${index + 1}-before.jpg`;
+    const afterImg = `images/after/${index + 1}-after.jpg`;
 
     let percentage = 0;
     const interval = setInterval(() => {
@@ -130,3 +130,4 @@ document.addEventListener('DOMContentLoaded', function () {
     createStardust('#stardustContainer');
     createStardust('.image-container');
 });
+

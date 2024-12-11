@@ -277,8 +277,8 @@ footer {
     display: flex;
     justify-content: space-between;
     gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center; 
+    /* justify-content: center;  */
+    width: 30%;
 }
 
 .thumbnails {
@@ -340,4 +340,51 @@ footer {
 
 .swiper-pagination-bullet-active {
     background-color: #333;
+}
+/* .options {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+  } */
+  
+  /* .options .thumbnail {
+    min-width: 100%;
+    transition: transform 0.5s ease;
+  } */
+  
+  .thumbnail-btn {
+    position: absolute;
+    top: 30%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    z-index: 10;
+  }
+  
+/* .thumbnail-btn.prev {
+    opacity: 1;
+    visibility: visible;
+} */
+/* .thumbnail-btn.prev.visible {
+    opacity: 1;
+}  */
+  .thumbnail-btn.next {
+    right: 10px;
+    opacity: 1;
+    transition: all 250ms
+  }
+.thumbnail-btn.prev.left-limiter {
+    cursor: not-allowed;
+    opacity: 0;
+}
+.thumbnail-btn.next.right-limiter {
+    visibility: hidden;
+    cursor: not-allowed;
+    transition: all 250ms;
+    opacity: 0;
 }
