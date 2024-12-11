@@ -38,6 +38,7 @@ html {
 
 .left-panel,
 .right-panel {
+    overflow-y: auto;
     flex: 1;
     padding: 40px;
     display: flex;
@@ -49,10 +50,6 @@ html {
     font-size: 1.8em;
     margin-bottom: 20px;
     text-align: center;
-}
-
-
-.left-panel {
 }
 
 .right-panel {
